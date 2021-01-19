@@ -1,0 +1,1 @@
+.gallery{max-width:100vw;display:grid;grid-template-columns:repeat(4, auto);grid-template-rows:auto;gap:1px 1px}.gallery__img{width:100%;height:100%;transition:all 0.5s ease}.gallery__img:hover{opacity:0.5}.gallery__text{position:absolute;top:50%;left:50%;z-index:100}.wrap{background-color:red;position:relative;z-index:1}
