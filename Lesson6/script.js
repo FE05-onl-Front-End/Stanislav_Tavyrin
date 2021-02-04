@@ -46,3 +46,36 @@ const reverse = (array) => {
 
 const dataResult = [1, 2, 3, 5, 6];
 console.log(reverse(dataResult)); // [3, 2, 1]
+
+
+// Task 4
+
+
+const array = [43, 54, 12, 'text', 'TeXt', 54, "54", 0, false, "car", "CAR", 43];
+let sortedArr = [];
+const newArr = [];
+const unique = arr => {
+    sortedArr = arr.map(element => {
+
+        if (typeof element == 'string') { return element.toLowerCase() }
+        else return element
+    });
+
+    return sortedArr.filter((elem, index) => {
+        return arr.indexOf(elem) == index;
+    })
+}
+function repeatValue(arr) {
+
+    unique(arr).map(element => {
+        let counter = 0;
+        for (i of arr) {
+            if (typeof element == 'string' && typeof i == 'string') {
+                element.toLowerCase() === i.toLowerCase() ? counter++ : false;
+            } else element === i ? counter++ : false;
+
+        }
+        newArr.push({ value: element, count: counter })
+    })
+    return newArr;
+}
