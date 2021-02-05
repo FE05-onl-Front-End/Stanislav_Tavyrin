@@ -1,84 +1,84 @@
-// Task 1
+// // Task 1
 
-const unique = (array) => {
-    return array.filter((element, index) => {
-        return array.indexOf(element) == index;
-    })
-}
+// const unique = (array) => {
+//     return array.filter((element, index) => {
+//         return array.indexOf(element) == index;
+//     })
+// }
 
-const data = [1, 2, 1, 2, 3];
-console.log(unique(data)); // [1, 2, 3]
-
-
-//    Tassk 2 
-
-const isEqual = (firstArray, secondArray) => {
-
-    let compareResult = true;
-
-    if (firstArray.length == secondArray.length) {
-        firstArray.forEach((element, index) => {
-            element == secondArray[index] ? true : compareResult = false;
-        })
-    } else compareResult = false;
-
-    return compareResult;
-}
-
-const arr1 = [1, 2, 3, 4];
-const arr2 = [1, 2, 3, 4];
-const arr3 = [1, 2, 3, 5];
-const arr4 = [1, 2, 3, 4, 5];
-console.log(isEqual(arr1, arr2)); // true
-console.log(isEqual(arr1, arr3)); // false
-console.log(isEqual(arr1, arr4)); // false
+// const data = [1, 2, 1, 2, 3];
+// console.log(unique(data)); // [1, 2, 3]
 
 
-//   Task 3
+// //    Tassk 2 
 
-const reverse = (array) => {
-    const reversedArray = [];
-    while (array.length) {
-        reversedArray.push(array.pop());
-    }
-    return reversedArray;
-}
+// const isEqual = (firstArray, secondArray) => {
 
-const dataResult = [1, 2, 3, 5, 6];
-console.log(reverse(dataResult)); // [3, 2, 1]
+//     let compareResult = true;
+
+//     if (firstArray.length == secondArray.length) {
+//         firstArray.forEach((element, index) => {
+//             element == secondArray[index] ? true : compareResult = false;
+//         })
+//     } else compareResult = false;
+
+//     return compareResult;
+// }
+
+// const arr1 = [1, 2, 3, 4];
+// const arr2 = [1, 2, 3, 4];
+// const arr3 = [1, 2, 3, 5];
+// const arr4 = [1, 2, 3, 4, 5];
+// console.log(isEqual(arr1, arr2)); // true
+// console.log(isEqual(arr1, arr3)); // false
+// console.log(isEqual(arr1, arr4)); // false
 
 
-// Task 4
+// //   Task 3
+
+// const reverse = (array) => {
+//     const reversedArray = [];
+//     while (array.length) {
+//         reversedArray.push(array.pop());
+//     }
+//     return reversedArray;
+// }
+
+// const dataResult = [1, 2, 3, 5, 6];
+// console.log(reverse(dataResult)); // [3, 2, 1]
 
 
-const array = [43, 54, 12, 'text', 'TeXt', 54, "54", 0, false, "car", "CAR", 43];
-let sortedArr = [];
-const newArr = [];
-const unique = arr => {
-    sortedArr = arr.map(element => {
+// // Task 4
 
-        if (typeof element == 'string') { return element.toLowerCase() }
-        else return element
-    });
 
-    return sortedArr.filter((elem, index) => {
-        return arr.indexOf(elem) == index;
-    })
-}
-function repeatValue(arr) {
+// const array = [43, 54, 12, 'text', 'TeXt', 54, "54", 0, false, "car", "CAR", 43];
+// let sortedArr = [];
+// const newArr = [];
+// const unique = arr => {
+//     sortedArr = arr.map(element => {
 
-    unique(arr).map(element => {
-        let counter = 0;
-        for (i of arr) {
-            if (typeof element == 'string' && typeof i == 'string') {
-                element.toLowerCase() === i.toLowerCase() ? counter++ : false;
-            } else element === i ? counter++ : false;
+//         if (typeof element == 'string') { return element.toLowerCase() }
+//         else return element
+//     });
 
-        }
-        newArr.push({ value: element, count: counter })
-    })
-    return newArr;
-}
+//     return sortedArr.filter((elem, index) => {
+//         return arr.indexOf(elem) == index;
+//     })
+// }
+// function repeatValue(arr) {
+
+//     unique(arr).map(element => {
+//         let counter = 0;
+//         for (i of arr) {
+//             if (typeof element == 'string' && typeof i == 'string') {
+//                 element.toLowerCase() === i.toLowerCase() ? counter++ : false;
+//             } else element === i ? counter++ : false;
+
+//         }
+//         newArr.push({ value: element, count: counter })
+//     })
+//     return newArr;
+// }
 
 
 // Task 5
@@ -298,19 +298,42 @@ let data = [
 ];
 
 
+
 const typeFilter = (arr, type) => {
     return arr.reduce((sum, item) => {
-       if (item.type == type)  sum.push(item);
-       return sum;
+        if (item.type == type) sum.push(item);
+        return sum;
     }, [])
 }
+//  1 task with reduce
 
-const mostExpensiveSector = (arr, type) => {
-    const typeFilteredArray = typeFilter(arr, type);
-    return typeFilteredArray.reduce((sum, item) => {
-       if (item.price >= sum[0].price)  sum.splice(0, 1, item);
-       return sum;
-    }, [typeFilteredArray[0]])
-    
+// const mostExpensiveSector = (arr, type) => {
+//     const typeFilteredArray = typeFilter(arr, type);
+//     return typeFilteredArray.reduce((sum, item) => {
+//        if (item.price >= sum[0].price)  sum.splice(0, 1, item);
+//        return sum;
+//     }, [typeFilteredArray[0]])
+
+// }
+// console.log(mostExpensiveSector(data, 2));
+
+// 2 task with reduce 
+
+
+const mostExpensiveType = (arr) => {
+    const overallCost = [];
+    let sumResult = 0;
+    for (let type = 1; type <= 4; type++) { // Цикл для суммирования всех цен участков одного типа от первого типа до четвертого. 
+        sumResult = typeFilter(arr, type).reduce((sum, { price }) => {
+            return sum + price;
+        }, 0);
+        overallCost.push({ overall: sumResult, type: type });  // массив из 4 объектов, сортированных по типу + сумма всех участков одного типа;
+    }
+    console.log(overallCost); //для наглядности вывод массива до работы по отбору;
+    return overallCost.reduce((acc, item) => {  // Возвращаем самую большую сумму цен; 
+        acc.overall > item.overall ? true : acc.splice(0, 1, item);
+        return acc;
+    }, [overallCost[0]])
+
 }
-console.log(mostExpensiveSector(data, 2));
+console.log(mostExpensiveType(data));
