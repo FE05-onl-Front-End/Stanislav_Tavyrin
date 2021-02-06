@@ -76,42 +76,51 @@ function zoo() {
 
         findAnimalInfo: (arr, animalName) => {
             const searchResult = zoo().findAnimal(arr, animalName);
-
+            const {animal, name, weight, isHealthy, warden} = zoo().findAnimal(arr, animalName);
             alert(`Информация о найденном животном: 
-                Животное: ${searchResult.animal}
-                Имя: ${searchResult.name}
-                Вес: ${searchResult.weight}
-                Состояние здоровья: ${searchResult.isHealthy ? 'Здоров' : 'Болен'}
-                Смотритель: ${searchResult.warden.name}`);
+                Животное: ${animal}
+                Имя: ${name}
+                Вес: ${weight}
+                Состояние здоровья: ${isHealthy ? 'Здоров' : 'Болен'}
+                Смотритель: ${warden.name}`);
             return searchResult;
         },
 
         deleteAnimal: (arr, animalName) => {
-            const searchResult = zoo().findAnimal(arr, animalName);
+            let searchResult = zoo().findAnimal(arr, animalName);
+            const {animal, name, weight, isHealthy, warden} = zoo().findAnimal(arr, animalName);
             let deletedAnimal = arr.splice(arr.indexOf(searchResult), 1);
             alert(`Информация о удаленном животном: 
-                Животное: ${searchResult.animal}
-                Имя: ${searchResult.name}
-                Вес: ${searchResult.weight}
-                Состояние здоровья: ${searchResult.isHealthy ? 'Здоров' : 'Болен'}
-                Смотритель: ${searchResult.warden.name}`);
+                Животное: ${animal}
+                Имя: ${name}
+                Вес: ${weight}
+                Состояние здоровья: ${isHealthy ? 'Здоров' : 'Болен'}
+                Смотритель: ${warden.name}`);
             return deletedAnimal;
 
         },
         renameAnimal: (arr, animalName, newName) => {
-            const searchResult = zoo().findAnimal(arr, animalName);
-            searchResult.name = newName;
+            const {name} = zoo().findAnimal(arr, animalName);
+            name = newName;
             return arr;
         },
         changeHealthStatus: (arr, animalName) => {
-            const searchResult = zoo().findAnimal(arr, animalName);
-            searchResult.isHealthy = !searchResult.isHealthy;
-            searchResult.isAche = !searchResult.isAche;
+            const {isHealthy, isAche} = zoo().findAnimal(arr, animalName);
+            isHealthy = !isHealthy;
+            isAche = !isAche;
             return arr;
         },
         addAnimal: (arr, newAnimalObj) => {
             arr.push(newAnimalObj);
+            const {animal, name, weight, isHealthy, warden} = newAnimalObj;
+            alert(`Информация о добавленном животном: 
+                Животное: ${animal}
+                Имя: ${name}
+                Вес: ${weight}
+                Состояние здоровья: ${isHealthy ? 'Здоров' : 'Болен'}
+                Смотритель: ${warden.name}`);
             return arr;
+
         },
         deleteProperty: (arr, animalName, property) => {
             const searchResult = zoo().findAnimal(arr, animalName);
@@ -126,9 +135,9 @@ function zoo() {
             return arr;
         },
         changeWarden: (arr, animalName, newWardenName, newWardenAge) => {
-            const searchResult = zoo().findAnimal(arr, animalName);
-            searchResult.warden.name = newWardenName;
-            searchResult.warden.age = newWardenAge;
+            const {warden} = zoo().findAnimal(arr, animalName);
+            warden.name = newWardenName;
+            warden.age = newWardenAge;
             return arr;
         },
         deleteWarden: (arr, animalName) => {
@@ -153,4 +162,8 @@ function zoo() {
 
 
 let zooManager = zoo();
-zooManager.addProperty(animals, 'timon', 'isAngry', true);
+zooManager.findAnimalInfo(animals, 'timon');
+
+zooManager.deleteAnimal(animals, 'timon');
+
+
