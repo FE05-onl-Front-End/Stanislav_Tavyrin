@@ -319,13 +319,15 @@ const areaFilter = (arr, maxArea, minArea) => {
 
 //  1 task with reduce
 
+
+
+
 const mostExpensiveSector = (arr, type) => {
     const typeFilteredArray = typeFilter(arr, type);
+    console.log(typeFilteredArray);
     return typeFilteredArray.reduce((sum, item) => {
-       if (item.price >= sum[0].price)  sum.splice(0, 1, item);
-       return sum;
-    }, [typeFilteredArray[0]])
-
+        return sum.price > item.price ? sum : (sum = item);
+    });
 }
 console.log(mostExpensiveSector(data, 2));
 
@@ -343,9 +345,8 @@ const mostExpensiveType = (arr) => {
     }
     console.log(overallCost); //для наглядности вывод массива до работы по отбору;
     return overallCost.reduce((acc, item) => {  // Возвращаем самую большую сумму цен; 
-        acc.overall > item.overall ? true : acc.splice(0, 1, item);
-        return acc;
-    }, [overallCost[0]])
+        return acc.overall > item.overall ? acc : (acc = item);
+    })
 
 }
 console.log(mostExpensiveType(data));
