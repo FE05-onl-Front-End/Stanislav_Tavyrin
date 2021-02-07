@@ -305,17 +305,29 @@ const typeFilter = (arr, type) => {
         return sum;
     }, [])
 }
+
+const priceFilter = (arr, maxPrice, minPrice) => {
+    return arr.filter(({ price }) => {
+        return price >= minPrice && price <= maxPrice;
+    })
+}
+const areaFilter = (arr, maxArea, minArea) => {
+    return arr.filter(({ area }) => {
+        return area >= minArea && area <= maxArea;
+    })
+}
+
 //  1 task with reduce
 
-// const mostExpensiveSector = (arr, type) => {
-//     const typeFilteredArray = typeFilter(arr, type);
-//     return typeFilteredArray.reduce((sum, item) => {
-//        if (item.price >= sum[0].price)  sum.splice(0, 1, item);
-//        return sum;
-//     }, [typeFilteredArray[0]])
+const mostExpensiveSector = (arr, type) => {
+    const typeFilteredArray = typeFilter(arr, type);
+    return typeFilteredArray.reduce((sum, item) => {
+       if (item.price >= sum[0].price)  sum.splice(0, 1, item);
+       return sum;
+    }, [typeFilteredArray[0]])
 
-// }
-// console.log(mostExpensiveSector(data, 2));
+}
+console.log(mostExpensiveSector(data, 2));
 
 // 2 task with reduce 
 
@@ -337,3 +349,23 @@ const mostExpensiveType = (arr) => {
 
 }
 console.log(mostExpensiveType(data));
+
+
+// 3 task filter whith price and area
+
+
+const searchLandByParams = (arr, maxPrice, minPrice, maxArea, minArea) => {
+
+    const pricefilteredArray = priceFilter(arr, maxPrice, minPrice);
+    if (pricefilteredArray.length) {
+        const areaFilteredArray = areaFilter(pricefilteredArray, maxArea, minArea);
+        if (areaFilteredArray.length) {
+            return areaFilteredArray;
+        } else alert('Подходящего участка нет');
+    } else alert('Подходящего участка нет');
+
+
+}
+
+let searchResult = searchLandByParams(data, 700, 400, 600, 400);
+console.log(searchResult);
