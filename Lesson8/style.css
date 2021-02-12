@@ -3,35 +3,35 @@
 }
 
 .modal {
-    
     position: fixed;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, .3);
     cursor: pointer;
 }
+
 .wrapper {
     display: none;
 }
+
 .incorrect {
     color: red;
     display: none;
-    
 }
 
 .popap {
     position: absolute;
     border: 1px solid rgba(0, 0, 0, .5);
     width: 300px;
-    height: 250px;
     background: #fff;
-    bottom: 0;
-    top: 0;
+    top: 50%;
     left: 0;
     right: 0;
     margin: auto;
     cursor: default;
     border-radius: 3px;
+    transform: translateY(-50%);
+
 }
 
 .popap-head {
@@ -71,7 +71,6 @@
 
 .popap-main label span {
     font: 12px sans-serif;
-   
 }
 
 .popap-main label input {

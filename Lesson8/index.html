@@ -22,20 +22,20 @@
                 <form class="popap-form" id="userform">
                     <label>
                         <span>First Name</span>
-                        <span class="incorrect">Incorrect value</span>
+                        <span class="incorrect">Вводите только буквы, длина не должна превышать 10 символов</span>
                         <input type="text" name="first-name" required oninput="checkNameInput()">
                         
                     </label>
                     <label>
                         <span>Last Name</span>
-                        <span class="incorrect">Incorrect value</span>
+                        <span class="incorrect">Вводите только буквы, длина не должна превышать 10 символов</span>
                         <input type="text" name="last-name" required oninput="checkLastNameInput()"> 
                         
                     </label>
                     <label>
                         <span>Age</span>
-                        <span class="incorrect">Incorrect value</span>
-                        <input type="text" name="age" required>
+                        <span class="incorrect">Вводите только цифры. Возраст может быть от 0 до 135</span>
+                        <input type="text" name="age" required oninput="checkAge()">
                         
                     </label>
                     <div class="popap-btn">
