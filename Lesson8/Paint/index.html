@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header_title">
+                Figure Constructor
+            </h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <form class="form">
+                <select name="select-fig" id="select" onchange="showFigure()">
+                    <option value=""></option>
+                    <option value="circle">Круг</option>
+                    <option value="sqr">Квадрат</option>
+                    <option value="triangle">Треугольник</option>
+                    <option value="rect">Прямоугольник</option>
+                    <option value="ellipse">Овал</option>
+                </select>
+                <div class="canvas">
+                    <!-- <img id="circle" class="canvas-img" src="./img/circle.svg" alt="круг"> -->
+
+                    <svg id="circle" class="canvas-img" width="266" height="266" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse ry="132" rx="132" class="svg" cy="132.75" cx="132.74998" stroke-width="1.5"
+                            stroke="#000" fill="#ffffff" />
+                    </svg>
+
+                    <svg id="sqr" class="canvas-img" width="271" height="271" xmlns="http://www.w3.org/2000/svg">
+                        <rect class="svg" height="269" width="269" y="0.75" x="0.75" stroke-width="1.5" stroke="#000"
+                            fill="#ffffff" />
+                    </svg>
+
+                    <svg id="triangle" class="canvas-img" width="370.99999999999994" height="325"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path class="svg" d="m0.75,323.75528l184.57448,-323.00528l184.57448,323.00528l-369.14897,0z"
+                            fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none" />
+                    </svg>
+
+                    <svg id="rect" class="canvas-img" width="419" height="259" xmlns="http://www.w3.org/2000/svg">
+                        <rect class="svg" height="157" width="417" y="51" x="1" stroke-width="1.5" stroke="#000"
+                            fill="#ffffff" />
+                        <rect height="0" stroke="#000" class="svg_2" width="4" y="257.75" x="399.75" stroke-width="1.5"
+                            fill="#ffffff" />
+                    </svg>
+
+                    <svg id="ellipse" class="canvas-img" width="419" height="259" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse ry="85" rx="206.5" class="svg" cy="123.38717" cx="208.68934" fill-opacity="null"
+                            stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="#ffffff" />
+                    </svg>
+                </div>
+                <div class="palette" id="palette">
+
+                </div>
+                <button type="button" id="btn" class="btn" onclick="resetColor()">
+                    Сбросить цвет
+                </button>
+            </form>
+        </div>
+    </main>
+    <script src="./script.js"></script>
+</body>
+
+</html>
