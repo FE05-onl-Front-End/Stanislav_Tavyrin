@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Modal</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="modal" onclick="hide()"></div>
+        <!-- В стилях display.none, удалите, чтобы увидеть -->
+        <div class="popap">
+            <div class="popap-head">
+                <div class="close" onclick="hide()">X</div>
+            </div>
+            <div class="popap-main">
+                <form class="popap-form" id="userform">
+                    <label>
+                        <span>First Name</span>
+                        <span class="incorrect">Вводите только буквы, длина не должна превышать 10 символов</span>
+                        <input type="text" name="first-name" required oninput="checkNameInput()">
+
+                    </label>
+                    <label>
+                        <span>Last Name</span>
+                        <span class="incorrect">Вводите только буквы, длина не должна превышать 10 символов</span>
+                        <input type="text" name="last-name" required oninput="checkLastNameInput()">
+
+                    </label>
+                    <label>
+                        <span>Age</span>
+                        <span class="incorrect">Вводите только цифры. Возраст может быть от 0 до 135</span>
+                        <input type="text" name="age" required oninput="checkAge()">
+
+                    </label>
+                    <div class="popap-btn">
+                        <button class="btn close" onclick="hide()">close</button>
+                        <button class="btn ok" type="submit">ok</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="btn add-user" onclick="show()">add user</div>
+    <table class="table" border="1px" id="table">
+        <tr>
+            <td>Name</td>
+            <td>Last Name</td>
+            <td>age</td>
+        </tr>
+    </table>
+    <script src="script.js"></script>
+</body>
+
+</html>
