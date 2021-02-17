@@ -6,6 +6,63 @@ let age = document.querySelector('input[name=age]');
 let form = document.querySelector('#userform');
 let incorrect = document.querySelectorAll('.incorrect');
 let okBtn = document.querySelector('.ok');
+const usersArr = [
+    {
+        firstName: 'Ashton',
+        lastName: 'Kutcher',
+        age: 40
+    }, {
+        firstName: 'Bradley',
+        lastName: 'Pitt',
+        age: 54
+    }, {
+        firstName: 'Hannah',
+        lastName: 'Dakota',
+        age: 24
+    }
+]
+let table = document.getElementById('table');
+let btn = document.getElementsByClassName('btn');
+let rows = document.getElementsByTagName('tr');
+const addUser = (index) => {
+    let newTr = document.createElement('tr');
+    newTr.innerHTML = `<td>${usersArr[index].firstName}</td>
+                       <td>${usersArr[index].lastName}</td>
+                       <td>${usersArr[index].age}</td>
+                       <td><button class='btn' onclick='deleteUser(event)'>x</button></td>`;
+    usersArr[index].age > 17 ? newTr.style.backgroundColor = 'green' : newTr.style.backgroundColor = 'red';
+    table.appendChild(newTr);
+
+}
+
+usersArr.forEach((element, i) => {
+    addUser(i);
+})
+
+const deleteUser = (event) => {
+    let userName = event.target.closest('tr').firstChild.innerHTML;
+    event.target.closest('tr').remove();
+    usersArr.forEach(({ firstName }, index) => {
+        firstName === userName ? usersArr.splice(index, 1) : false;
+    })
+
+}
+
+function CreateUser(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+}
+
+const registerUser = function () {
+    usersArr.push(new CreateUser(firstName.value, lastName.value, age.value));
+    addUser(usersArr.length - 1);
+    hide();
+}
+okBtn.addEventListener('click', registerUser);
+
+
+
 
 function show() {
     modal.style.display = 'block';
@@ -65,52 +122,10 @@ function checkAge() {
     }
 }
 
-form.addEventListener('submit', () => {
-    alert(`
-           Имя: ${firstName.value}
-           Фамилия: ${lastName.value}
-           Возраст: ${age.value}`);
-
-})
-
-const usersArr = [
-    {
-        firstName: 'Ashton',
-        lastName: 'Kutcher',
-        age: 40
-    }, {
-        firstName: 'Bradley',
-        lastName: 'Pitt',
-        age: 54
-    }, {
-        firstName: 'Hannah',
-        lastName: 'Dakota',
-        age: 24
-    }
-]
-
-let table = document.getElementById('table');
-let btn = document.getElementsByClassName('btn');
-let rows = document.getElementsByTagName('tr');
-const addUser = (arr) => {
-    arr.forEach(({ firstName, lastName, age }) => {
-        let newTr = document.createElement('tr');
-        newTr.innerHTML = `<td>${firstName}</td>
-                            <td>${lastName}</td>
-                            <td>${age}</td>
-                            <td><button class='btn' onclick='deleteUser(event)'>x</button></td>`;
-        table.appendChild(newTr);
-    })
-}
-
-const deleteUser = (event) => {
-    let userName = event.target.closest('tr').firstChild.innerHTML;
-    event.target.closest('tr').remove();
-    usersArr.forEach(({ firstName }, index) => {
-        firstName === userName ? usersArr.splice(index, 1) : false;
-    })
-
-}
 
 
-addUser(usersArr);
+
+
+
+
+
