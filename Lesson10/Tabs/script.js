@@ -29,7 +29,6 @@ closeBtn.forEach(elem => {
         let switchTab = deletedTab.nextElementSibling || deletedTab.previousElementSibling;
         if (deletedTab.classList.value.includes('active')) {
             deletedTab.remove();
-            changeTab(switchTab);
             changeContent(switchTab);
             if (tabs.children.length == 1) closeBtn.forEach(elem => elem.style.display = 'none')
         } else {
